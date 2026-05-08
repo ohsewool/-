@@ -1,0 +1,112 @@
+[
+  {
+    "timestamp": "2026-05-04 13:27:26",
+    "data_shape": [
+      10000,
+      11
+    ],
+    "target": "Machine failure",
+    "best_model": "Logistic Regression",
+    "results": [
+      {
+        "모델": "Logistic Regression",
+        "Accuracy": 0.999,
+        "F1": 0.999,
+        "ROC-AUC": 0.9885
+      },
+      {
+        "모델": "Random Forest",
+        "Accuracy": 0.9991,
+        "F1": 0.9991,
+        "ROC-AUC": 0.987
+      },
+      {
+        "모델": "Decision Tree",
+        "Accuracy": 0.9978,
+        "F1": 0.9978,
+        "ROC-AUC": 0.9861
+      },
+      {
+        "모델": "Gradient Boosting",
+        "Accuracy": 0.9976,
+        "F1": 0.9976,
+        "ROC-AUC": 0.9843
+      }
+    ],
+    "optuna_applied": false
+  },
+  {
+    "timestamp": "2026-05-04 13:28:12",
+    "data_shape": [
+      10000,
+      11
+    ],
+    "target": "Machine failure",
+    "best_model": "Logistic Regression",
+    "results": [
+      {
+        "모델": "Logistic Regression",
+        "Accuracy": 0.999,
+        "F1": 0.999,
+        "ROC-AUC": 0.9885
+      },
+      {
+        "모델": "Random Forest",
+        "Accuracy": 0.9991,
+        "F1": 0.9991,
+        "ROC-AUC": 0.987
+      },
+      {
+        "모델": "Decision Tree",
+        "Accuracy": 0.9978,
+        "F1": 0.9978,
+        "ROC-AUC": 0.9861
+      },
+      {
+        "모델": "Gradient Boosting",
+        "Accuracy": 0.9976,
+        "F1": 0.9976,
+        "ROC-AUC": 0.9843
+      }
+    ],
+    "optuna_applied": true,
+    "optuna_params": "{'random_state': 42}",
+    "tuned_roc": 0.9885
+  },
+  {
+    "timestamp": "2026-05-04 14:39:48",
+    "data_shape": [
+      10000,
+      11
+    ],
+    "target": "Machine failure",
+    "best_model": "Logistic Regression",
+    "results": [
+      {
+        "model": "Logistic Regression",
+        "accuracy": 0.999,
+        "f1": 0.999,
+        "roc_auc": 0.9885
+      },
+      {
+        "model": "Random Forest",
+        "accuracy": 0.9991,
+        "f1": 0.9991,
+        "roc_auc": 0.987
+      },
+      {
+        "model": "Decision Tree",
+        "accuracy": 0.9978,
+        "f1": 0.9978,
+        "roc_auc": 0.9861
+      },
+      {
+        "model": "Gradient Boosting",
+        "accuracy": 0.9976,
+        "f1": 0.9976,
+        "roc_auc": 0.9843
+      }
+    ],
+    "optuna_applied": false
+  }
+]
