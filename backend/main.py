@@ -130,7 +130,7 @@ except: LGBM_OK = False
 _GEMINI_ERROR = ""
 try:
     import google.generativeai as genai
-    _GEMINI_KEY = os.getenv("GEMINI_API_KEY", "AIzaSyBYpKlzh7kdaIUqTNfaT32SfD4cCO3ZNJo")
+    _GEMINI_KEY = os.getenv("GEMINI_API_KEY", "AIzaSyB4sC3JoPAK3UqBsp8r6Fd2wbkqxwCPA9c")
     if _GEMINI_KEY:
         genai.configure(api_key=_GEMINI_KEY)
         _GEMINI_MODEL = genai.GenerativeModel("gemini-2.0-flash")
