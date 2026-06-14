@@ -145,6 +145,9 @@ def create_analysis_steps_from_plan(
                 "step_id": step.step_id,
                 "tool_name": step.tool_name,
                 "reason": step.reason,
+                "expected_input": step.expected_input,
+                "expected_output": step.expected_output,
+                "human_review_may_be_required": step.human_review_may_be_required,
             },
             "created_at": now,
         }

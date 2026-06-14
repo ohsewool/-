@@ -509,6 +509,64 @@ html.dark {
   .hamburger-btn { display: none; }
 }
 
+.goal-textarea {
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  padding: 12px 14px;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.6;
+  outline: none;
+}
+
+.goal-textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.chip-button {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-alt);
+  color: var(--text-2);
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.chip-button:hover {
+  border-color: #2563eb;
+  color: #1d4ed8;
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.mini-muted-box {
+  display: grid;
+  gap: 4px;
+  border: 1px solid var(--border-sub);
+  border-radius: 8px;
+  background: var(--surface-alt);
+  padding: 9px 10px;
+}
+
+.mini-muted-box span {
+  color: var(--text-label);
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.mini-muted-box strong {
+  color: var(--text-2);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
 /* ── Dark mode overrides ─────────────────────────────── */
 html.dark .badge-blue   { background: rgba(99,102,241,0.15); color: #818cf8; border-color: rgba(99,102,241,0.35); }
 html.dark .badge-green  { background: rgba(16,185,129,0.12); color: #34d399; border-color: rgba(16,185,129,0.35); }

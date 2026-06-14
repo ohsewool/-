@@ -20,6 +20,60 @@ class AgentMockPlanBody(BaseModel):
     file_path: str | None = None
 
 
+class AgentGoalRunBody(BaseModel):
+    user_goal: str
+    project_id: str | None = None
+    dataset_id: str | None = None
+
+
+def _plan_steps_payload(steps):
+    return [{
+        "id": step.get("id"),
+        "step_index": step.get("step_index"),
+        "title": step.get("title"),
+        "status": step.get("status"),
+        "payload": step.get("payload") or {},
+    } for step in steps]
+
+
+@app.post("/api/agent/runs")
+async def create_goal_first_agent_run(
+    body: AgentGoalRunBody,
+    user=Depends(get_current_user),
+):
+    goal = (body.user_goal or "").strip()
+    if len(goal) < 6:
+        raise HTTPException(400, "분석 목표를 조금 더 구체적으로 입력해 주세요.")
+    assert_project_and_dataset_access(user, body.project_id, body.dataset_id)
+    planner = SupervisorPlanner()
+    plan = planner.create_initial_plan(goal)
+    supported = planner.is_supported_goal(goal)
+    status = "planned" if supported else "needs_review"
+    conn = get_db()
+    try:
+        user_id = user.get("sub") if user else None
+        run_id = create_analysis_run(
+            conn,
+            plan.goal,
+            user_id=user_id,
+            project_id=body.project_id,
+            dataset_id=body.dataset_id,
+            status=status,
+        )
+        steps = create_analysis_steps_from_plan(conn, run_id, plan)
+    finally:
+        conn.close()
+    return {
+        "analysis_run_id": run_id,
+        "status": status,
+        "goal": plan.goal,
+        "supported": supported,
+        "steps": _plan_steps_payload(steps),
+        "agent_status": "planned_only",
+        "message": "PR-27은 목표와 deterministic plan만 저장합니다. 아직 tool execution은 수행하지 않습니다.",
+    }
+
+
 @app.get("/api/agent/tools")
 async def list_agent_mock_tools():
     registry = build_pr04_mock_registry()
@@ -74,8 +128,8 @@ async def get_agent_mock_run(analysis_run_id: str, user=Depends(get_current_user
         raise HTTPException(404, "Agent analysis run not found")
     return {
         **trace,
-        "agent_status": "mock_trace_only",
-        "message": "This run contains stored PR-03 mock planner trace data.",
+        "agent_status": "planned_or_trace",
+        "message": "Stored Agent Run data. PR-27 runs contain a persisted goal and pending deterministic plan only.",
     }
 
 

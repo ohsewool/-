@@ -28,7 +28,7 @@ Completion note: PR-26 is assumed complete. Agentic AutoML roadmap starts from P
 
 ## PR-27 Goal-first Agent Mode
 
-Status: blocked
+Status: review_needed
 
 Task file: .codex/tasks/PR-27-goal-first-agent-mode.md
 
@@ -49,10 +49,10 @@ Review gate:
 * Refresh does not lose the run/plan.
 * Existing upload/sample/starter flow still works.
 
-Blocker:
+Review note:
 
-* `.codex/tasks/PR-27-goal-first-agent-mode.md` currently contains only the placeholder text and explicitly says not to implement PR-27 until the full PR-specific implementation instructions are added.
-* Fill the PR-27 detailed task prompt before moving this task back to `todo` or `in_progress`.
+* PR-27 now creates persisted goal-first Agent Runs with deterministic pending plans only.
+* Tool execution, observations, decisions, and completed traces remain intentionally out of scope for PR-28.
 
 ---
 

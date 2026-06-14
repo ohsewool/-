@@ -21,6 +21,10 @@ class AgentPlanStep:
     title: str
     tool_name: str | None = None
     reason: str = ""
+    expected_input: str = ""
+    expected_output: str = ""
+    status: str = "pending"
+    human_review_may_be_required: bool = False
 
 
 @dataclass(frozen=True)
